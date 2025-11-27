@@ -13,6 +13,12 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("2U-MtyAtRw9ecupt4");
+        })();
+    </script>
 </head>
 
 <body>
@@ -157,121 +163,110 @@
             </div>
 
             <div class="about-content">
-                <div class="character-card pixel-border arcade-glow">
-                    <div class="card-header">CHARACTER SELECT</div>
+            </div>
 
-                    <div class="profile-display">
-                        <div class="pixel-frame">
-                            <div class="profile-image">
-                                <img src="assets/profile.jpg" alt="Jawad Hamid Upal" class="pixelated-img"
-                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%2300ff88%22 width=%22400%22 height=%22400%22/%3E%3Ctext fill=%22%23000%22 font-family=%22monospace%22 font-size=%22150%22 x=%22120%22 y=%22250%22%3EJU%3C/text%3E%3C/svg%3E'">
-                            </div>
-                            <div class="health-bar">
-                                <div class="health-fill"></div>
-                            </div>
+            <div class="player-info">
+                <h3 class="player-name pixel-text">JAWAD HAMID UPAL</h3>
+                <p class="player-class">MULTIMEDIA TECH STUDENT</p>
+
+                <div class="status-online">
+                    <span class="status-dot blink"></span>
+                    ONLINE - READY FOR QUESTS
+                </div>
+
+                <div class="player-tags">
+                    <span class="tag pixel-border">STUDENT</span>
+                    <span class="tag pixel-border">LEARNER</span>
+                    <span class="tag pixel-border">GAMER</span>
+                    <span class="tag pixel-border">ARTIST</span>
+                    <span class="tag pixel-border">CODER</span>
+                </div>
+            </div>
+            </div>
+
+            <div class="social-buttons">
+                <a href="mailto:upal9677@gmail.com" class="social-btn pixel-border">
+                    <i class="fas fa-envelope"></i>
+                    <span>EMAIL</span>
+                </a>
+                <a href="https://www.facebook.com/jawadhamid.upal.3" class="social-btn pixel-border" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>FACEBOOK</span>
+                </a>
+                <a href="https://www.linkedin.com/in/jawad-hamid-upal-230141389/" class="social-btn pixel-border"
+                    target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>LINKEDIN</span>
+                </a>
+                <a href="https://github.com/JawadUpl" class="social-btn pixel-border" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>GITHUB</span>
+                </a>
+            </div>
+            </div>
+
+            <div class="stats-panel pixel-border arcade-glow">
+                <div class="card-header">PLAYER STATS</div>
+
+                <div class="bio-section">
+                    <h4 class="pixel-text">QUEST LOG</h4>
+                    <p>My name is Jawad Hamid Upal, and I am a student at Daffodil International University,
+                        Department of Multimedia and Creative Technology (MCT).</p>
+                    <p>Currently, I have a dream to make my own game, and so I am now on a quest to learn while
+                        playing some games as part of my hobby.</p>
+                </div>
+
+                <div class="skills-section">
+                    <h4 class="pixel-text">SKILL TREE</h4>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">🎨</span>
+                            <span class="skill-name">BLENDER</span>
+                            <span class="skill-level">LV 65</span>
                         </div>
-
-                        <div class="player-info">
-                            <h3 class="player-name pixel-text">JAWAD HAMID UPAL</h3>
-                            <p class="player-class">MULTIMEDIA TECH STUDENT</p>
-
-                            <div class="status-online">
-                                <span class="status-dot blink"></span>
-                                ONLINE - READY FOR QUESTS
-                            </div>
-
-                            <div class="player-tags">
-                                <span class="tag pixel-border">STUDENT</span>
-                                <span class="tag pixel-border">LEARNER</span>
-                                <span class="tag pixel-border">GAMER</span>
-                                <span class="tag pixel-border">ARTIST</span>
-                                <span class="tag pixel-border">CODER</span>
+                        <div class="exp-bar">
+                            <div class="exp-fill" style="width: 65%">
+                                <span class="exp-text">6500/10000 EXP</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="social-buttons">
-                        <a href="#" class="social-btn pixel-border">
-                            <i class="fas fa-envelope"></i>
-                            <span>EMAIL</span>
-                        </a>
-                        <a href="#" class="social-btn pixel-border">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>FACEBOOK</span>
-                        </a>
-                        <a href="#" class="social-btn pixel-border">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>LINKEDIN</span>
-                        </a>
-                        <a href="#" class="social-btn pixel-border">
-                            <i class="fab fa-github"></i>
-                            <span>GITHUB</span>
-                        </a>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">💻</span>
+                            <span class="skill-name">C PROGRAMMING</span>
+                            <span class="skill-level">LV 70</span>
+                        </div>
+                        <div class="exp-bar">
+                            <div class="exp-fill" style="width: 70%">
+                                <span class="exp-text">7000/10000 EXP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">🎮</span>
+                            <span class="skill-name">DIGITAL ART</span>
+                            <span class="skill-level">LV 80</span>
+                        </div>
+                        <div class="exp-bar">
+                            <div class="exp-fill" style="width: 80%">
+                                <span class="exp-text">8000/10000 EXP</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="stats-panel pixel-border arcade-glow">
-                    <div class="card-header">PLAYER STATS</div>
-
-                    <div class="bio-section">
-                        <h4 class="pixel-text">QUEST LOG</h4>
-                        <p>My name is Jawad Hamid Upal, and I am a student at Daffodil International University,
-                            Department of Multimedia and Creative Technology (MCT).</p>
-                        <p>Currently, I have a dream to make my own game, and so I am now on a quest to learn while
-                            playing some games as part of my hobby.</p>
-                    </div>
-
-                    <div class="skills-section">
-                        <h4 class="pixel-text">SKILL TREE</h4>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-icon">🎨</span>
-                                <span class="skill-name">BLENDER</span>
-                                <span class="skill-level">LV 65</span>
-                            </div>
-                            <div class="exp-bar">
-                                <div class="exp-fill" style="width: 65%">
-                                    <span class="exp-text">6500/10000 EXP</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-icon">💻</span>
-                                <span class="skill-name">C PROGRAMMING</span>
-                                <span class="skill-level">LV 70</span>
-                            </div>
-                            <div class="exp-bar">
-                                <div class="exp-fill" style="width: 70%">
-                                    <span class="exp-text">7000/10000 EXP</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-icon">🎮</span>
-                                <span class="skill-name">DIGITAL ART</span>
-                                <span class="skill-level">LV 80</span>
-                            </div>
-                            <div class="exp-bar">
-                                <div class="exp-fill" style="width: 80%">
-                                    <span class="exp-text">8000/10000 EXP</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="achievement-box pixel-border">
-                        <div class="achievement-icon">★</div>
-                        <div class="achievement-text">
-                            <strong>ACHIEVEMENT UNLOCKED:</strong>
-                            "WISH ME LUCK ON MY CREATIVE JOURNEY!"
-                        </div>
+                <div class="achievement-box pixel-border">
+                    <div class="achievement-icon">★</div>
+                    <div class="achievement-text">
+                        <strong>ACHIEVEMENT UNLOCKED:</strong>
+                        "WISH ME LUCK ON MY CREATIVE JOURNEY!"
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -396,35 +391,48 @@
                         currently active!</p>
 
                     <div class="contact-methods">
-                        <a href="mailto:contact@example.com" class="contact-item pixel-border">
+                        <a href="mailto:upal9677@gmail.com" class="contact-item pixel-border">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-details">
                                 <div class="contact-label">EMAIL</div>
-                                <div class="contact-value">contact@jawad.com</div>
+                                <div class="contact-value">upal9677@gmail.com</div>
                             </div>
                             <div class="contact-arrow">►</div>
                         </a>
 
-                        <a href="#" class="contact-item pixel-border">
+                        <a href="https://www.facebook.com/jawadhamid.upal.3" class="contact-item pixel-border"
+                            target="_blank">
                             <div class="contact-icon">
                                 <i class="fab fa-facebook"></i>
                             </div>
                             <div class="contact-details">
                                 <div class="contact-label">FACEBOOK</div>
-                                <div class="contact-value">@jawadhamidupal</div>
+                                <div class="contact-value">Jawad Hamid Upal</div>
                             </div>
                             <div class="contact-arrow">►</div>
                         </a>
 
-                        <a href="#" class="contact-item pixel-border">
+                        <a href="https://www.linkedin.com/in/jawad-hamid-upal-230141389/"
+                            class="contact-item pixel-border" target="_blank">
                             <div class="contact-icon">
                                 <i class="fab fa-linkedin"></i>
                             </div>
                             <div class="contact-details">
                                 <div class="contact-label">LINKEDIN</div>
                                 <div class="contact-value">Jawad Hamid Upal</div>
+                            </div>
+                            <div class="contact-arrow">►</div>
+                        </a>
+
+                        <a href="https://github.com/JawadUpl" class="contact-item pixel-border" target="_blank">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-label">GITHUB</div>
+                                <div class="contact-value">JawadUpl</div>
                             </div>
                             <div class="contact-arrow">►</div>
                         </a>

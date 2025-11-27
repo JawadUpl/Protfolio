@@ -1470,6 +1470,173 @@ textarea.pixel-input {
     .game-levels {
         grid-template-columns: 1fr;
     }
+}
+
+.pixel-input:focus {
+    outline: none;
+    box-shadow: 0 0 20px var(--neon-cyan);
+    background: rgba(0, 255, 255, 0.05);
+}
+
+.pixel-input::placeholder {
+    color: var(--text-muted);
+}
+
+textarea.pixel-input {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================= */
+
+.footer {
+    margin: 4rem 2rem 2rem;
+    padding: 3rem 2rem;
+    background: var(--bg-screen);
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.game-over-text {
+    font-size: 2rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan);
+    margin-bottom: 2rem;
+}
+
+.footer-info {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.heart {
+    color: var(--neon-pink);
+    filter: drop-shadow(0 0 10px var(--neon-pink));
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.pixel-decoration {
+    height: 8px;
+    background: repeating-linear-gradient(90deg,
+            var(--neon-cyan) 0px,
+            var(--neon-cyan) 20px,
+            var(--neon-magenta) 20px,
+            var(--neon-magenta) 40px,
+            var(--neon-yellow) 40px,
+            var(--neon-yellow) 60px,
+            var(--neon-green) 60px,
+            var(--neon-green) 80px);
+    margin-top: 2rem;
+    animation: pixelScroll 2s linear infinite;
+}
+
+@keyframes pixelScroll {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 80px 0;
+    }
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+
+.full-width {
+    width: 100%;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 1200px) {
+    .power-ups {
+        display: none;
+    }
+}
+
+@media (max-width: 968px) {
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem;
+        font-size: 0.5rem;
+    }
+
+    .score-display {
+        font-size: 0.6rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.5rem, 6vw, 3rem);
+    }
+
+    .player-stats {
+        gap: 1rem;
+    }
+
+    .stat-item {
+        min-width: 120px;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    section {
+        padding: 3rem 1rem;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-logo {
+        font-size: 0.8rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .game-levels {
+        grid-template-columns: 1fr;
+    }
 
     .player-stats {
         flex-direction: column;
@@ -1477,5 +1644,29 @@ textarea.pixel-input {
 
     .social-buttons {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile fix for terminal-line overflow */
+@media (max-width: 640px) {
+    .terminal-line {
+        font-size: 0.8rem;
+        padding: 0.8rem;
+        width: auto;
+        /* Allow shrinking to fit text */
+        max-width: 90vw;
+        /* Prevent overflow */
+        display: inline-block;
+        /* Match desktop behavior */
+        box-sizing: border-box;
+        white-space: normal;
+        /* Allow text to wrap */
+        word-wrap: break-word;
+        /* Break long words */
+    }
+
+    .cursor-blink {
+        display: inline-block;
+        /* Keep cursor inline with text */
     }
 }

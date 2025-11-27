@@ -141,20 +141,37 @@ function animatePixels() {
 // TYPING EFFECT
 // ==========================================
 const typedTextElement = document.getElementById('typed-text');
-const textArray = [
-    'STUDENT.DEVELOPER',
-    'ASPIRING.GAME.DEV',
-    'MULTIMEDIA.ARTIST',
-    'PASSIONATE.LEARNER',
-    'CREATIVE.CODER'
-];
+
+// Dynamic text array based on screen size
+function getTextArray() {
+    return window.innerWidth <= 768 ? [
+        'STUDENT',
+        'DEVELOPER',
+        'GAME.DEV',
+        'ILLUSTRATOR',
+        'CODER'
+    ] : [
+        'STUDENT.DEVELOPER',
+        'ASPIRING.GAME.DEV',
+        'MULTIMEDIA.ILLUSTRATOR',
+        'PASSIONATE.LEARNER',
+        'CREATIVE.CODER'
+    ];
+}
+
+let textArray = getTextArray();
+
+window.addEventListener('resize', () => {
+    textArray = getTextArray();
+});
+
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 let typingSpeed = 100;
 
 function typeEffect() {
-    const currentText = textArray[textIndex];
+    const currentText = textArray[textIndex % textArray.length];
 
     if (!isDeleting) {
         typedTextElement.textContent = currentText.substring(0, charIndex + 1);
@@ -384,7 +401,7 @@ const contactForm = document.getElementById('contact-form');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    playSound('success');
+    playSound('select');
 
     const formData = new FormData(contactForm);
     const name = formData.get('name');
@@ -392,9 +409,38 @@ contactForm.addEventListener('submit', (e) => {
     const message = formData.get('message');
 
     if (name && email && message) {
-        showNotification(`MESSAGE SENT SUCCESSFULLY!\\n\\nTHANK YOU, ${name.toUpperCase()}!\\nI'LL REPLY SOON!`);
-        contactForm.reset();
-        addScore(500);
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.querySelector('span:last-child').textContent;
+        submitBtn.querySelector('span:last-child').textContent = 'SENDING...';
+        submitBtn.disabled = true;
+
+        // Check if emailjs is defined
+        if (typeof emailjs === 'undefined') {
+            console.error('EmailJS SDK not loaded');
+            showNotification('SYSTEM ERROR: EMAIL SERVICE OFFLINE');
+            submitBtn.querySelector('span:last-child').textContent = originalBtnText;
+            submitBtn.disabled = false;
+            return;
+        }
+
+        // Explicitly pass public key as 4th argument
+        emailjs.sendForm('service_jygrtxw', 'template_9awwxv5', contactForm, '2U-MtyAtRw9ecupt4')
+            .then(() => {
+                playSound('success');
+                showNotification(`MESSAGE SENT SUCCESSFULLY!\n\nTHANK YOU, ${name.toUpperCase()}!\nI'LL REPLY SOON!`);
+                contactForm.reset();
+                addScore(500);
+            })
+            .catch((error) => {
+                console.error('FAILED...', error);
+                playSound('blip'); // Error sound
+                showNotification(`FAILED TO SEND MESSAGE.\nERROR: ${JSON.stringify(error)}`);
+            })
+            .finally(() => {
+                submitBtn.querySelector('span:last-child').textContent = originalBtnText;
+                submitBtn.disabled = false;
+            });
     }
 });
 
@@ -450,7 +496,6 @@ const socialBtns = document.querySelectorAll('.social-btn');
 
 socialBtns.forEach(btn => {
     btn.addEventListener('click', function (e) {
-        e.preventDefault();
         playSound('select');
         addScore(50);
     });
@@ -607,7 +652,7 @@ function activateGodMode() {
     score += 99999;
     updateScore();
 
-    showNotification('🎮 GOD MODE ACTIVATED! 🎮\\n\\n+99999 SCORE!\\nYOU ARE NOW A LEGEND!');
+    showNotification('🎮 GOD MODE ACTIVATED! 🎮\n\n+99999 SCORE!\nYOU ARE NOW A LEGEND!');
 
     // Add rainbow effect
     document.body.style.animation = 'rainbow 3s linear infinite';
