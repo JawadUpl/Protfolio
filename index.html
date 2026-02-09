@@ -4,497 +4,641 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jawad Hamid Upal - Gamer Portfolio</title>
+    <title>JAWAD HAMID UPAL | PLAYER SELECT 2026</title>
     <meta name="description" content="Retro gaming portfolio of Jawad Hamid Upal - Student, Gamer, Developer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("2U-MtyAtRw9ecupt4");
-        })();
-    </script>
 </head>
 
 <body>
-    <!-- CRT Scanlines Effect -->
-    <div class="crt-scanlines"></div>
-    <div class="crt-overlay"></div>
+    <!-- CRT Screen Effects -->
+    <div class="crt-lines"></div>
+    <div class="crt-flicker"></div>
+    <div class="screen-noise"></div>
 
-    <!-- Animated Pixel Background -->
-    <canvas id="pixel-bg"></canvas>
+    <!-- Pixel Rain Background -->
+    <canvas id="pixel-rain"></canvas>
 
     <!-- Custom Pixel Cursor -->
     <div class="pixel-cursor"></div>
-    <div class="cursor-trail"></div>
+    <div class="cursor-shadow"></div>
 
-    <!-- Arcade Loading Screen -->
-    <div id="loading-screen">
-        <div class="arcade-frame">
-            <div class="screen-glow"></div>
-            <div class="game-loading">
-                <div class="pixel-logo">
-                    <div class="logo-pixel"></div>
-                    <div class="logo-pixel"></div>
-                    <div class="logo-pixel"></div>
-                    <div class="logo-pixel"></div>
-                </div>
-                <div class="loading-text">LOADING</div>
-                <div class="loading-bar">
-                    <div class="loading-fill" id="loading-fill"></div>
-                </div>
-                <div class="press-start">PRESS START</div>
+    <!-- Boot Sequence Loading -->
+    <div id="boot-screen">
+        <div class="boot-content">
+            <div class="boot-logo">
+                <span class="logo-char">J</span>
+                <span class="logo-char">H</span>
+                <span class="logo-char">U</span>
             </div>
+            <div class="boot-text">
+                <div class="boot-line">SYSTEM BOOT v2.026</div>
+                <div class="boot-line">LOADING PLAYER DATA...</div>
+                <div class="boot-line" id="boot-status">INITIALIZING■■■</div>
+            </div>
+            <div class="boot-bar">
+                <div class="boot-fill" id="boot-fill"></div>
+            </div>
+            <div class="boot-ready">[ PRESS ANY KEY OR CLICK TO START ]</div>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <main id="main-content">
+    <!-- Main Game Screen -->
+    <main id="game-screen">
 
-        <!-- Arcade Cabinet Navigation -->
-        <nav class="navbar pixel-border">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <span class="logo-bracket">▼</span>
-                    <span class="logo-text pixel-text">JHU</span>
-                    <span class="logo-bracket">▼</span>
+        <!-- Top HUD Bar -->
+        <nav class="hud-bar">
+            <div class="hud-left">
+                <div class="player-badge">
+                    <span class="badge-icon">▶</span>
+                    <span class="badge-name pixel-text">PLAYER_1</span>
                 </div>
-                <div class="nav-links">
-                    <a href="#home" class="nav-link pixel-btn active" data-text="HOME">HOME</a>
-                    <a href="#about" class="nav-link pixel-btn" data-text="ABOUT">ABOUT</a>
-                    <a href="#works" class="nav-link pixel-btn" data-text="WORKS">WORKS</a>
-                    <a href="#contact" class="nav-link pixel-btn" data-text="CONTACT">CONTACT</a>
-                </div>
-                <div class="score-display">
-                    <span class="score-label">SCORE:</span>
-                    <span class="score-value" id="score">000000</span>
+            </div>
+            <div class="hud-center">
+                <a href="#home" class="hud-link active">HOME</a>
+                <span class="hud-divider">│</span>
+                <a href="#profile" class="hud-link">PROFILE</a>
+                <span class="hud-divider">│</span>
+                <a href="#skills" class="hud-link">SKILLS</a>
+                <span class="hud-divider">│</span>
+                <a href="#gallery" class="hud-link">GALLERY</a>
+                <span class="hud-divider">│</span>
+                <a href="#stages" class="hud-link">STAGES</a>
+                <span class="hud-divider">│</span>
+                <a href="#connect" class="hud-link">CONNECT</a>
+            </div>
+            <div class="hud-right">
+                <div class="score-box">
+                    <span class="score-label">HI-SCORE</span>
+                    <span class="score-num" id="hi-score">000000</span>
                 </div>
             </div>
         </nav>
 
-        <!-- Hero Section - Game Start Screen -->
-        <section id="home" class="hero-section">
-            <div class="game-screen">
-                <div class="hero-content">
-                    <div class="insert-coin">
-                        <span class="coin-icon">◆</span>
-                        INSERT COIN TO CONTINUE
-                        <span class="coin-icon">◆</span>
+        <!-- Title Screen Section -->
+        <section id="home" class="screen title-screen">
+            <div class="screen-content">
+                <!-- Decorative Corners -->
+                <div class="corner corner-tl"></div>
+                <div class="corner corner-tr"></div>
+                <div class="corner corner-bl"></div>
+                <div class="corner corner-br"></div>
+
+                <div class="title-wrapper">
+                    <div class="coin-insert blink-text">
+                        ◆ INSERT COIN ◆
                     </div>
 
-                    <h1 class="hero-title pixel-text">
-                        <span class="glitch-text" data-text="JAWAD">JAWAD</span>
-                        <span class="glitch-text" data-text="HAMID">HAMID</span>
-                        <span class="glitch-text neon-text" data-text="UPAL">UPAL</span>
+                    <h1 class="game-title">
+                        <span class="title-row">
+                            <span class="pixel-letter" data-letter="J">J</span>
+                            <span class="pixel-letter" data-letter="A">A</span>
+                            <span class="pixel-letter" data-letter="W">W</span>
+                            <span class="pixel-letter" data-letter="A">A</span>
+                            <span class="pixel-letter" data-letter="D">D</span>
+                        </span>
+                        <span class="title-row">
+                            <span class="pixel-letter" data-letter="H">H</span>
+                            <span class="pixel-letter" data-letter="A">A</span>
+                            <span class="pixel-letter" data-letter="M">M</span>
+                            <span class="pixel-letter" data-letter="I">I</span>
+                            <span class="pixel-letter" data-letter="D">D</span>
+                        </span>
+                        <span class="title-row neon-glow">
+                            <span class="pixel-letter" data-letter="U">U</span>
+                            <span class="pixel-letter" data-letter="P">P</span>
+                            <span class="pixel-letter" data-letter="A">A</span>
+                            <span class="pixel-letter" data-letter="L">L</span>
+                        </span>
                     </h1>
 
-                    <div class="hero-subtitle">
-                        <div class="terminal-line">
-                            <span class="prompt">&gt;</span>
-                            <span id="typed-text" class="pixel-text"></span>
-                            <span class="cursor-blink">█</span>
+                    <div class="subtitle-box">
+                        <span class="subtitle-arrow">▶</span>
+                        <span class="typing-text" id="typing-text"></span>
+                        <span class="cursor-block">█</span>
+                    </div>
+
+                    <div class="player-select">
+                        <div class="select-option">
+                            <span class="option-icon">♥</span>
+                            <span class="option-text">STUDENT</span>
+                        </div>
+                        <div class="select-option">
+                            <span class="option-icon">★</span>
+                            <span class="option-text">DEVELOPER</span>
+                        </div>
+                        <div class="select-option">
+                            <span class="option-icon">◆</span>
+                            <span class="option-text">ARTIST</span>
                         </div>
                     </div>
 
-                    <div class="player-stats">
-                        <div class="stat-item">
-                            <div class="stat-icon">❤</div>
-                            <div class="stat-label">LEVEL</div>
-                            <div class="stat-value">STUDENT</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">⚔</div>
-                            <div class="stat-label">CLASS</div>
-                            <div class="stat-value">DEVELOPER</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">★</div>
-                            <div class="stat-label">XP</div>
-                            <div class="stat-value">9999</div>
-                        </div>
-                    </div>
-
-                    <div class="hero-cta">
-                        <button class="btn-arcade btn-primary" id="start-game">
-                            <span class="btn-glow"></span>
+                    <div class="start-buttons">
+                        <button class="pixel-btn btn-start" id="btn-start">
+                            <span class="btn-icon">▶</span>
                             <span>START GAME</span>
                         </button>
-                        <button class="btn-arcade btn-secondary">
-                            <span class="btn-glow"></span>
+                        <button class="pixel-btn btn-options">
+                            <span class="btn-icon">⬇</span>
                             <span>DOWNLOAD CV</span>
                         </button>
                     </div>
-
-                    <div class="scroll-arrow">
-                        <div class="arrow-pixel">▼</div>
-                        <div class="arrow-pixel">▼</div>
-                        <div class="arrow-pixel">▼</div>
-                    </div>
                 </div>
 
-                <!-- Floating Power-Ups -->
-                <div class="power-ups">
-                    <div class="power-up" data-type="code">
-                        <div class="power-up-icon">◆</div>
-                        <div class="power-up-label">CODE</div>
-                    </div>
-                    <div class="power-up" data-type="art">
-                        <div class="power-up-icon">◆</div>
-                        <div class="power-up-label">ART</div>
-                    </div>
-                    <div class="power-up" data-type="game">
-                        <div class="power-up-icon">◆</div>
-                        <div class="power-up-label">GAME</div>
-                    </div>
+                <div class="scroll-prompt">
+                    <span class="scroll-arrows">▼ ▼ ▼</span>
+                    <span class="scroll-text">SCROLL DOWN</span>
                 </div>
             </div>
         </section>
 
-        <!-- About Section - Character Stats -->
-        <section id="about" class="about-section">
-            <div class="section-header">
-                <div class="section-number pixel-border">STAGE 01</div>
-                <h2 class="section-title pixel-text">PLAYER PROFILE</h2>
-            </div>
-
-            <div class="about-content">
-                <div class="character-card pixel-border arcade-glow">
-                    <div class="card-header">CHARACTER SELECT</div>
-
-                    <div class="profile-display">
-                        <div class="pixel-frame">
-                            <div class="profile-image">
-                                <img src="../assets/profile.jpg" alt="Jawad Hamid Upal" class="pixelated-img"
-                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%2300ff88%22 width=%22400%22 height=%22400%22/%3E%3Ctext fill=%22%23000%22 font-family=%22monospace%22 font-size=%22150%22 x=%22120%22 y=%22250%22%3EJU%3C/text%3E%3C/svg%3E'">
-                            </div>
-                            <div class="health-bar">
-                                <div class="health-fill"></div>
-                            </div>
-                        </div>
-
-                        <div class="player-info">
-                            <h3 class="player-name pixel-text">JAWAD HAMID UPAL</h3>
-                            <p class="player-class">MULTIMEDIA TECH STUDENT</p>
-
-                            <div class="status-online">
-                                <span class="status-dot blink"></span>
-                                ONLINE - READY FOR QUESTS
-                            </div>
-
-                            <div class="player-tags">
-                                <span class="tag pixel-border">STUDENT</span>
-                                <span class="tag pixel-border">LEARNER</span>
-                                <span class="tag pixel-border">GAMER</span>
-                                <span class="tag pixel-border">ARTIST</span>
-                                <span class="tag pixel-border">CODER</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="social-buttons">
-                        <a href="mailto:upal9677@gmail.com" class="social-btn pixel-border">
-                            <i class="fas fa-envelope"></i>
-                            <span>EMAIL</span>
-                        </a>
-                        <a href="https://www.facebook.com/jawadhamid.upal.3" class="social-btn pixel-border"
-                            target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>FACEBOOK</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/jawad-hamid-upal-230141389/"
-                            class="social-btn pixel-border" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>LINKEDIN</span>
-                        </a>
-                        <a href="https://github.com/JawadUpl" class="social-btn pixel-border" target="_blank">
-                            <i class="fab fa-github"></i>
-                            <span>GITHUB</span>
-                        </a>
-                    </div>
+        <!-- Player Profile Section -->
+        <section id="profile" class="screen profile-screen">
+            <div class="screen-content">
+                <div class="section-title-bar">
+                    <span class="title-deco">═══</span>
+                    <span class="section-num">01</span>
+                    <h2 class="section-title pixel-text">PLAYER PROFILE</h2>
+                    <span class="title-deco">═══</span>
                 </div>
 
-                <div class="stats-panel pixel-border arcade-glow">
-                    <div class="card-header">PLAYER STATS</div>
-
-                    <div class="bio-section">
-                        <h4 class="pixel-text">QUEST LOG</h4>
-                        <p>My name is Jawad Hamid Upal, and I am a student at Daffodil International University,
-                            Department of Multimedia and Creative Technology (MCT).</p>
-                        <p>Currently, I have a dream to make my own game, and so I am now on a quest to learn while
-                            playing some games as part of my hobby.</p>
-                    </div>
-
-                    <div class="skills-section">
-                        <h4 class="pixel-text">SKILL TREE</h4>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-icon">🎨</span>
-                                <span class="skill-name">BLENDER</span>
-                                <span class="skill-level">LV 65</span>
-                            </div>
-                            <div class="exp-bar">
-                                <div class="exp-fill" style="width: 65%">
-                                    <span class="exp-text">6500/10000 EXP</span>
-                                </div>
-                            </div>
+                <div class="profile-grid">
+                    <!-- Character Card -->
+                    <div class="char-card pixel-border">
+                        <div class="card-header">
+                            <span class="header-deco">╔══</span>
+                            <span>CHARACTER DATA</span>
+                            <span class="header-deco">══╗</span>
                         </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-icon">💻</span>
-                                <span class="skill-name">C PROGRAMMING</span>
-                                <span class="skill-level">LV 70</span>
-                            </div>
-                            <div class="exp-bar">
-                                <div class="exp-fill" style="width: 70%">
-                                    <span class="exp-text">7000/10000 EXP</span>
-                                </div>
-                            </div>
+                        <div class="char-portrait">
+                            <img src="profile.jpg" alt="Jawad Hamid Upal"
+                                onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%2300ff88%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%23000%22 font-family=%22monospace%22 font-size=%2280%22 x=%2250%22 y=%22130%22%3EJU%3C/text%3E%3C/svg%3E'">
+                            <div class="portrait-frame"></div>
                         </div>
-
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-icon">🎮</span>
-                                <span class="skill-name">DIGITAL ART</span>
-                                <span class="skill-level">LV 80</span>
+                        <div class="char-name pixel-text">JAWAD HAMID UPAL</div>
+                        <div class="char-class">MULTIMEDIA TECH STUDENT</div>
+                        <div class="hp-bar">
+                            <span class="hp-label">HP</span>
+                            <div class="hp-track">
+                                <div class="hp-fill"></div>
                             </div>
-                            <div class="exp-bar">
-                                <div class="exp-fill" style="width: 80%">
-                                    <span class="exp-text">8000/10000 EXP</span>
-                                </div>
-                            </div>
+                            <span class="hp-text">100/100</span>
+                        </div>
+                        <div class="online-status">
+                            <span class="status-dot pulse"></span>
+                            <span>ONLINE - READY TO QUEST</span>
                         </div>
                     </div>
 
-                    <div class="achievement-box pixel-border">
-                        <div class="achievement-icon">★</div>
-                        <div class="achievement-text">
-                            <strong>ACHIEVEMENT UNLOCKED:</strong>
-                            "WISH ME LUCK ON MY CREATIVE JOURNEY!"
+                    <!-- Stats Card -->
+                    <div class="stats-card pixel-border">
+                        <div class="card-header">
+                            <span class="header-deco">╔══</span>
+                            <span>QUEST LOG</span>
+                            <span class="header-deco">══╗</span>
+                        </div>
+                        <div class="stats-content">
+                            <div class="bio-text">
+                                <p>► My name is <span class="highlight">Jawad Hamid Upal</span>, and I am a student at
+                                    Daffodil International University, Department of Multimedia and Creative Technology
+                                    (MCT).</p>
+                                <p>► Currently on a quest to create my own game while playing games as part of my
+                                    learning journey.</p>
+                            </div>
+
+                            <div class="achievement-banner pixel-border-alt">
+                                <div class="trophy-icon">🏆</div>
+                                <div class="achievement-info">
+                                    <span class="ach-label">★ ACHIEVEMENT UNLOCKED ★</span>
+                                    <span class="ach-title">2ND PLACE - PIXEL TO PROGRAM 2025</span>
+                                </div>
+                            </div>
+
+                            <div class="social-bar">
+                                <a href="mailto:upal9677@gmail.com" class="social-pixel" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="https://www.behance.net/jawadhamidupal" target="_blank" class="social-pixel"
+                                    title="Behance">
+                                    <i class="fab fa-behance"></i>
+                                </a>
+                                <a href="https://www.facebook.com/jawadhamid.upal.3" target="_blank"
+                                    class="social-pixel" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/jawad-hamid-upal-230141389/" target="_blank"
+                                    class="social-pixel" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/JawadUpl" target="_blank" class="social-pixel"
+                                    title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Works Section - Game Levels -->
-        <section id="works" class="works-section">
-            <div class="section-header">
-                <div class="section-number pixel-border">STAGE 02</div>
-                <h2 class="section-title pixel-text">SELECT LEVEL</h2>
-            </div>
-
-            <div class="game-levels">
-                <div class="level-card pixel-border arcade-glow">
-                    <div class="level-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="level-info">
-                        <div class="level-label">LEVEL 01</div>
-                        <h3 class="pixel-text">CURRENT WORKS</h3>
-                        <p>Explore ongoing projects and latest creations</p>
-                        <div class="level-difficulty">
-                            <span class="difficulty-label">DIFFICULTY:</span>
-                            <span class="stars">★★★☆☆</span>
-                        </div>
-                    </div>
-                    <button class="level-btn pixel-border">PLAY</button>
+        <!-- Skills Section -->
+        <section id="skills" class="screen skills-screen">
+            <div class="screen-content">
+                <div class="section-title-bar">
+                    <span class="title-deco">═══</span>
+                    <span class="section-num">02</span>
+                    <h2 class="section-title pixel-text">SKILL TREE</h2>
+                    <span class="title-deco">═══</span>
                 </div>
 
-                <div class="level-card pixel-border arcade-glow">
-                    <div class="level-icon">
-                        <i class="fas fa-folder-open"></i>
-                    </div>
-                    <div class="level-info">
-                        <div class="level-label">LEVEL 02</div>
-                        <h3 class="pixel-text">PAST WORKS</h3>
-                        <p>Completed projects and achievements</p>
-                        <div class="level-difficulty">
-                            <span class="difficulty-label">DIFFICULTY:</span>
-                            <span class="stars">★★☆☆☆</span>
+                <div class="skills-grid">
+                    <div class="skill-node pixel-border">
+                        <div class="skill-icon">🎨</div>
+                        <div class="skill-name pixel-text">BLENDER</div>
+                        <div class="skill-bar">
+                            <div class="bar-fill" data-level="65"></div>
                         </div>
+                        <div class="skill-level">LV.65</div>
+                        <div class="skill-exp">6500/10000 EXP</div>
                     </div>
-                    <button class="level-btn pixel-border">PLAY</button>
+
+                    <div class="skill-node pixel-border skill-mastered">
+                        <div class="skill-icon">💻</div>
+                        <div class="skill-name pixel-text">C PROGRAMMING</div>
+                        <div class="skill-bar">
+                            <div class="bar-fill" data-level="100"></div>
+                        </div>
+                        <div class="skill-level">LV.MAX</div>
+                        <div class="skill-exp">★ MASTERED ★</div>
+                    </div>
+
+                    <div class="skill-node pixel-border">
+                        <div class="skill-icon">🌐</div>
+                        <div class="skill-name pixel-text">WEB DESIGN</div>
+                        <div class="skill-bar">
+                            <div class="bar-fill" data-level="60"></div>
+                        </div>
+                        <div class="skill-level">LV.60</div>
+                        <div class="skill-exp">6000/10000 EXP</div>
+                    </div>
+
+                    <div class="skill-node pixel-border skill-new">
+                        <div class="skill-icon">⚔️</div>
+                        <div class="skill-name pixel-text">C# PROGRAMMING</div>
+                        <div class="skill-bar">
+                            <div class="bar-fill" data-level="35"></div>
+                        </div>
+                        <div class="skill-level">LV.35</div>
+                        <div class="skill-exp">ROOKIE • LEARNING</div>
+                    </div>
+
+                    <div class="skill-node pixel-border skill-new">
+                        <div class="skill-icon">🏗️</div>
+                        <div class="skill-name pixel-text">AUTODESK 3DS MAX</div>
+                        <div class="skill-bar">
+                            <div class="bar-fill" data-level="45"></div>
+                        </div>
+                        <div class="skill-level">LV.45</div>
+                        <div class="skill-exp">IN PROGRESS...</div>
+                    </div>
                 </div>
 
-                <div class="level-card pixel-border arcade-glow">
-                    <div class="level-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <div class="level-info">
-                        <div class="level-label">LEVEL 03</div>
-                        <h3 class="pixel-text">CURRENT PLAYS</h3>
-                        <p>Games currently enjoying and learning from</p>
-                        <div class="level-difficulty">
-                            <span class="difficulty-label">DIFFICULTY:</span>
-                            <span class="stars">★★★★☆</span>
-                        </div>
-                    </div>
-                    <button class="level-btn pixel-border">PLAY</button>
-                </div>
-
-                <div class="level-card pixel-border arcade-glow">
-                    <div class="level-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="level-info">
-                        <div class="level-label">LEVEL 04</div>
-                        <h3 class="pixel-text">PAST PLAYS</h3>
-                        <p>Completed games and memorable experiences</p>
-                        <div class="level-difficulty">
-                            <span class="difficulty-label">DIFFICULTY:</span>
-                            <span class="stars">★★★★★</span>
-                        </div>
-                    </div>
-                    <button class="level-btn pixel-border">PLAY</button>
-                </div>
-
-                <div class="level-card pixel-border arcade-glow">
-                    <div class="level-icon">
-                        <i class="fas fa-pen-nib"></i>
-                    </div>
-                    <div class="level-info">
-                        <div class="level-label">LEVEL 05</div>
-                        <h3 class="pixel-text">BLOGS</h3>
-                        <p>Thoughts, tutorials, and creative insights</p>
-                        <div class="level-difficulty">
-                            <span class="difficulty-label">DIFFICULTY:</span>
-                            <span class="stars">★★☆☆☆</span>
-                        </div>
-                    </div>
-                    <button class="level-btn pixel-border">PLAY</button>
-                </div>
-
-                <div class="level-card pixel-border arcade-glow">
-                    <div class="level-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <div class="level-info">
-                        <div class="level-label">LEVEL 06</div>
-                        <h3 class="pixel-text">ACHIEVEMENTS</h3>
-                        <p>Milestones, awards, and recognitions</p>
-                        <div class="level-difficulty">
-                            <span class="difficulty-label">DIFFICULTY:</span>
-                            <span class="stars">★★★☆☆</span>
-                        </div>
-                    </div>
-                    <button class="level-btn pixel-border">PLAY</button>
+                <div class="skill-tags">
+                    <span class="tag-item">HTML/CSS</span>
+                    <span class="tag-item">PHOTOSHOP</span>
+                    <span class="tag-item">AFTER EFFECTS</span>
+                    <span class="tag-item">GAME DESIGN</span>
+                    <span class="tag-item">C#</span>
+                    <span class="tag-item">3DS MAX</span>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section - Final Boss -->
-        <section id="contact" class="contact-section">
-            <div class="section-header">
-                <div class="section-number pixel-border">STAGE 03</div>
-                <h2 class="section-title pixel-text">CONTACT BOSS</h2>
-            </div>
+        <!-- Gallery Section -->
+        <section id="gallery" class="screen gallery-screen">
+            <div class="screen-content">
+                <div class="section-title-bar">
+                    <span class="title-deco">═══</span>
+                    <span class="section-num">03</span>
+                    <h2 class="section-title pixel-text">3D GALLERY</h2>
+                    <span class="title-deco">═══</span>
+                </div>
 
-            <div class="contact-content">
-                <div class="contact-info pixel-border arcade-glow">
-                    <div class="card-header">COMMUNICATION CHANNELS</div>
+                <div class="gallery-subtitle">🏫 3D CLASSROOM DESIGN - AUTODESK 3DS MAX</div>
 
-                    <p class="contact-desc">Select your preferred method to establish connection. All channels are
-                        currently active!</p>
-
-                    <div class="contact-methods">
-                        <a href="mailto:upal9677@gmail.com" class="contact-item pixel-border">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">EMAIL</div>
-                                <div class="contact-value">upal9677@gmail.com</div>
-                            </div>
-                            <div class="contact-arrow">►</div>
-                        </a>
-
-                        <a href="https://www.facebook.com/jawadhamid.upal.3" class="contact-item pixel-border"
-                            target="_blank">
-                            <div class="contact-icon">
-                                <i class="fab fa-facebook"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">FACEBOOK</div>
-                                <div class="contact-value">Jawad Hamid Upal</div>
-                            </div>
-                            <div class="contact-arrow">►</div>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/jawad-hamid-upal-230141389/"
-                            class="contact-item pixel-border" target="_blank">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">LINKEDIN</div>
-                                <div class="contact-value">Jawad Hamid Upal</div>
-                            </div>
-                            <div class="contact-arrow">►</div>
-                        </a>
-
-                        <a href="https://github.com/JawadUpl" class="contact-item pixel-border" target="_blank">
-                            <div class="contact-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">GITHUB</div>
-                                <div class="contact-value">JawadUpl</div>
-                            </div>
-                            <div class="contact-arrow">►</div>
-                        </a>
+                <div class="gallery-grid">
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 1.jpg">
+                        <img src="3D Classroom/Render 1.jpg" alt="Classroom Render 1" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 2.jpg">
+                        <img src="3D Classroom/Render 2.jpg" alt="Classroom Render 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 3.jpg">
+                        <img src="3D Classroom/Render 3.jpg" alt="Classroom Render 3" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 4.jpg">
+                        <img src="3D Classroom/Render 4.jpg" alt="Classroom Render 4" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 5.jpg">
+                        <img src="3D Classroom/Render 5.jpg" alt="Classroom Render 5" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 6.jpg">
+                        <img src="3D Classroom/Render 6.jpg" alt="Classroom Render 6" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 7.jpg">
+                        <img src="3D Classroom/Render 7.jpg" alt="Classroom Render 7" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 8.jpg">
+                        <img src="3D Classroom/Render 8.jpg" alt="Classroom Render 8" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="3D Classroom/Render 9.jpg">
+                        <img src="3D Classroom/Render 9.jpg" alt="Classroom Render 9" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="message-console pixel-border arcade-glow">
-                    <div class="card-header">SEND MESSAGE</div>
+                <!-- Donut Section -->
+                <div class="gallery-subtitle" style="margin-top: 60px;">🍩 DONUT 3D MODEL - BLENDER</div>
 
-                    <form id="contact-form" class="pixel-form">
-                        <div class="form-group">
-                            <label class="pixel-text">NAME:</label>
-                            <input type="text" name="name" class="pixel-input" required>
+                <div class="gallery-grid">
+                    <div class="gallery-item pixel-border" data-img="Donut/Render.png">
+                        <img src="Donut/Render.png" alt="Donut Render 1" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
                         </div>
-
-                        <div class="form-group">
-                            <label class="pixel-text">EMAIL:</label>
-                            <input type="email" name="email" class="pixel-input" required>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="Donut/Render2.png">
+                        <img src="Donut/Render2.png" alt="Donut Render 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
                         </div>
-
-                        <div class="form-group">
-                            <label class="pixel-text">MESSAGE:</label>
-                            <textarea name="message" class="pixel-input" rows="6" required></textarea>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="Donut/Render3.png">
+                        <img src="Donut/Render3.png" alt="Donut Render 3" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
                         </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="Donut/Render4.png">
+                        <img src="Donut/Render4.png" alt="Donut Render 4" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="Donut/Render5.png">
+                        <img src="Donut/Render5.png" alt="Donut Render 5" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="Donut/Render6.png">
+                        <img src="Donut/Render6.png" alt="Donut Render 6" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item pixel-border" data-img="Donut/Render7.png">
+                        <img src="Donut/Render7.png" alt="Donut Render 7" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="view-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <button type="submit" class="btn-arcade btn-primary full-width">
-                            <span class="btn-glow"></span>
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <button class="lightbox-close" id="lightbox-close">✕</button>
+                <button class="lightbox-prev" id="lightbox-prev">◀</button>
+                <img id="lightbox-img" src="" alt="Gallery Image">
+                <button class="lightbox-next" id="lightbox-next">▶</button>
+                <div class="lightbox-counter" id="lightbox-counter">1 / 16</div>
+            </div>
+        </div>
+
+        <!-- Stage Select Section -->
+        <section id="stages" class="screen stages-screen">
+            <div class="screen-content">
+                <div class="section-title-bar">
+                    <span class="title-deco">═══</span>
+                    <span class="section-num">04</span>
+                    <h2 class="section-title pixel-text">STAGE SELECT</h2>
+                    <span class="title-deco">═══</span>
+                </div>
+
+                <div class="stage-grid">
+                    <div class="stage-card pixel-border">
+                        <div class="stage-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-num">STAGE 01</div>
+                            <h3 class="stage-name pixel-text">CURRENT WORKS</h3>
+                            <p class="stage-desc">Explore ongoing projects</p>
+                            <div class="stage-difficulty">
+                                <span>DIFFICULTY:</span>
+                                <span class="stars">★★★☆☆</span>
+                            </div>
+                        </div>
+                        <button class="stage-btn">▶ PLAY</button>
+                    </div>
+
+                    <a href="https://www.behance.net/jawadhamidupal" target="_blank" class="stage-card pixel-border">
+                        <div class="stage-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-num">STAGE 02</div>
+                            <h3 class="stage-name pixel-text">PAST WORKS</h3>
+                            <p class="stage-desc">🍩 Donut (Blender) • 🏫 3D Classroom (3ds Max)</p>
+                            <div class="stage-difficulty">
+                                <span>DIFFICULTY:</span>
+                                <span class="stars">★★★☆☆</span>
+                            </div>
+                        </div>
+                        <span class="stage-btn">▶ VIEW</span>
+                    </a>
+
+                    <a href="https://steamcommunity.com/profiles/76561198861726725/" target="_blank"
+                        class="stage-card pixel-border">
+                        <div class="stage-icon">
+                            <i class="fab fa-steam"></i>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-num">STAGE 03</div>
+                            <h3 class="stage-name pixel-text">GAME JOURNAL</h3>
+                            <p class="stage-desc">🏎️ Forza Horizon 5 • The Crew Motorfest</p>
+                            <div class="stage-difficulty">
+                                <span>171 GAMES</span>
+                                <span class="stars">LV.44</span>
+                            </div>
+                        </div>
+                        <span class="stage-btn">▶ STEAM</span>
+                    </a>
+
+                    <div class="stage-card pixel-border">
+                        <div class="stage-icon">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-num">STAGE 04</div>
+                            <h3 class="stage-name pixel-text">BLOG</h3>
+                            <p class="stage-desc">Thoughts & tutorials</p>
+                            <div class="stage-difficulty">
+                                <span>DIFFICULTY:</span>
+                                <span class="stars">★★☆☆☆</span>
+                            </div>
+                        </div>
+                        <button class="stage-btn">▶ PLAY</button>
+                    </div>
+                </div>
+
+                <div class="behance-link">
+                    <a href="https://www.behance.net/jawadhamidupal" target="_blank" class="pixel-btn btn-behance">
+                        <i class="fab fa-behance"></i>
+                        <span>VIEW BEHANCE PORTFOLIO</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section id="connect" class="screen connect-screen">
+            <div class="screen-content">
+                <div class="section-title-bar">
+                    <span class="title-deco">═══</span>
+                    <span class="section-num">05</span>
+                    <h2 class="section-title pixel-text">CONNECT</h2>
+                    <span class="title-deco">═══</span>
+                </div>
+
+                <div class="connect-grid">
+                    <div class="connect-info pixel-border">
+                        <div class="card-header">
+                            <span class="header-deco">╔══</span>
+                            <span>COMMUNICATION</span>
+                            <span class="header-deco">══╗</span>
+                        </div>
+                        <p class="connect-text">Select your preferred channel to establish connection. All systems
+                            online!</p>
+
+                        <div class="channel-list">
+                            <a href="mailto:upal9677@gmail.com" class="channel-item">
+                                <span class="channel-icon"><i class="fas fa-envelope"></i></span>
+                                <div class="channel-info">
+                                    <span class="channel-name">EMAIL</span>
+                                    <span class="channel-value">upal9677@gmail.com</span>
+                                </div>
+                                <span class="channel-arrow">►</span>
+                            </a>
+                            <a href="https://www.behance.net/jawadhamidupal" target="_blank" class="channel-item">
+                                <span class="channel-icon"><i class="fab fa-behance"></i></span>
+                                <div class="channel-info">
+                                    <span class="channel-name">BEHANCE</span>
+                                    <span class="channel-value">jawadhamidupal</span>
+                                </div>
+                                <span class="channel-arrow">►</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/jawad-hamid-upal-230141389/" target="_blank"
+                                class="channel-item">
+                                <span class="channel-icon"><i class="fab fa-linkedin"></i></span>
+                                <div class="channel-info">
+                                    <span class="channel-name">LINKEDIN</span>
+                                    <span class="channel-value">jawad-hamid-upal</span>
+                                </div>
+                                <span class="channel-arrow">►</span>
+                            </a>
+                            <a href="https://www.facebook.com/jawadhamid.upal.3" target="_blank" class="channel-item">
+                                <span class="channel-icon"><i class="fab fa-facebook"></i></span>
+                                <div class="channel-info">
+                                    <span class="channel-name">FACEBOOK</span>
+                                    <span class="channel-value">jawadhamid.upal</span>
+                                </div>
+                                <span class="channel-arrow">►</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="message-terminal pixel-border">
+                        <div class="card-header">
+                            <span class="header-deco">╔══</span>
                             <span>SEND MESSAGE</span>
-                        </button>
-                    </form>
+                            <span class="header-deco">══╗</span>
+                        </div>
+                        <form id="contact-form" class="terminal-form">
+                            <div class="form-line">
+                                <span class="prompt">NAME&gt;</span>
+                                <input type="text" name="name" required>
+                            </div>
+                            <div class="form-line">
+                                <span class="prompt">EMAIL&gt;</span>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="form-line">
+                                <span class="prompt">MSG&gt;</span>
+                                <textarea name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="pixel-btn btn-send">
+                                <span>◆ TRANSMIT MESSAGE ◆</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer - Game Over Screen -->
-        <footer class="footer pixel-border">
+        <!-- Footer -->
+        <footer class="game-footer">
             <div class="footer-content">
-                <div class="game-over-text pixel-text">THANK YOU FOR PLAYING!</div>
-                <div class="footer-info">
-                    <p>&copy; 2025 JAWAD HAMID UPAL • CRAFTED WITH <span class="heart blink">❤</span> AND PIXELS</p>
-                </div>
-                <div class="footer-links">
+                <div class="game-over pixel-text">THANK YOU FOR PLAYING!</div>
+                <p class="credits">© 2026 JAWAD HAMID UPAL • CRAFTED WITH <span class="heart pulse">♥</span> AND PIXELS
+                </p>
+                <div class="footer-nav">
                     <a href="#home">HOME</a>
-                    <a href="#about">ABOUT</a>
-                    <a href="#works">WORKS</a>
-                    <a href="#contact">CONTACT</a>
+                    <span>│</span>
+                    <a href="#profile">PROFILE</a>
+                    <span>│</span>
+                    <a href="#skills">SKILLS</a>
+                    <span>│</span>
+                    <a href="#stages">STAGES</a>
+                    <span>│</span>
+                    <a href="#connect">CONNECT</a>
                 </div>
             </div>
-            <div class="pixel-decoration"></div>
+            <div class="scanline-bar"></div>
         </footer>
     </main>
 
